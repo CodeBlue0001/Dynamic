@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="/public/js/jquery-3.7.1.min.js"></script>
+
+<link rel="stylesheet" href="/public/css/style.css">
+<link rel="stylesheet" href="/public/css/dashboard.css">
+
+  <!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- google icons  -->
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- socket.io connection -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js" integrity="sha512-VJ6+sp2E5rFQk05caiXXzQd1wBABpjEj1r5kMiLmGAAgwPItw1YpqsCCBtq8Yr1x6C49/mTpRdXtq8O2RcZhlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<title>Chat-Board </title>
+
+
+
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none; min-width:150px; padding: 15px;" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <div class="topnav" id="mytopnav">
+
+
+  <a href="Home#" class="w3-bar-item w3-button" style="min-width: fit-content; max-width:auto;">Home <i class="fa fa-home"></i></a>
+  <a href="/dashboard" class="w3-bar-item w3-button" style="min-width: fit-content; max-width:auto;">Dashboard</a>
+<a href="/profile"  class="w3-bar-item w3-button" style="min-width: fit-content; max-width:auto;">profile <i class="fa fa-profile"></i></a>
+<a href="/updateprofile" class="w3-bar-item w3-button" style="min-width: fit-content; max-width:auto;">Update <i class="fa fa-trash-o"></i></a>
+
+  <a href="/logout" class="w3-bar-item w3-button" style="min-width: fit-content; max-width:auto;">log-out <i class="fa fa-sign-out"></i></a>
+
+
+
+  <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+   </a> -->
+
+  </div>
+
+</div>
+
+
+<style>
+  .search_Hover{
+    /* animation-duration: 0.5s; */
+    transition:all 0.5s ease-out ;
+    /* background-color: #04AA6D;
+    color: aquamarine; */
+    /* font-size: 30px; */
+    
+    border: double #04AA6D;
+  }
+  .search_Hover:hover{
+    transform: scale(1.1);
+    /* transition:all 2s ease-out ; */
+    box-shadow:0 0 0 5px #04AA6D ;
+  }
+  .topnav a {
+  /* float: left; */
+  display: block;
+  /* color: #f2f2f2; */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active:hover{
+  background-color:  #117400;
+  color:#000000;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+/* @media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+} */
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+/* @media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+} */
+</style>
+
+
+
+
+
+<div id="main">
+
+<div class="w3-teal">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container">
+    <h1>My Page</h1>
+    <from class="search">
+
+      <input type="search" name="search" id="searchBox" style="background-color: aquamarine;"> <button id="submitBtn" type="submit" onclick="searchElementInList()"> <i class="fa fa-search" ></i></button>
+    </from>
+  </div>
+</div>
+
+<script>
+ 
+  
+// var enter= document.getElementById('searchBox').value;
+ 
+
+ 
+ function searchElementInList() {
+
+var searchTerm= document.getElementById('searchBox').value;
+// console.log("Search Item ",searchTerm)
+// console.log(typeof(searchTerm))
+
+let noSpacesSearchTerm = searchTerm.replace(/\s/g, '');
+
+// Select all list items in the document
+var listItems = document.querySelectorAll('li');
+
+// Loop through each list item
+for (var i = 0; i < listItems.length; i++) {
+
+     // Select the span element within the current list item
+     var span = listItems[i].querySelector('span').textContent.replace(/\s/g,'');
+        // console.log(span,typeof(span))
+
+    // If the list item's text content matches the search term
+    if (span.toLowerCase()===noSpacesSearchTerm.toLowerCase()) {
+        // Log the matching list item
+        // console.log('Found item:', listItems[i]);
+
+        //specific data-id retrieveing
+        console.log('data-id',listItems[i].getAttribute('data-id'))
+
+         var data_id=listItems[i].getAttribute('data-id');
+
+         var id =listItems[i].getAttribute('id');
+           // console.log(id)
+           //  console.log('#'+data_id, typeof(data_id))
+
+          // document.getElementById('#'+data_id).style.display='none';
+         var spanTag=listItems[i].querySelector('span')
+          // console.log(spanTag)
+
+        //  spanTag.addClass('search_Hover');
+         
+         var spanId=spanTag.getAttribute('id')
+         hoverSearchItem(data_id,spanId)
+
+        return listItems[i];
+
+    }
+}
+
+// If no matching list item was found
+console.log('No item found with the term:', searchTerm);
+
+}
+
+
+// hover search item
+
+function hoverSearchItem(data_id,spanId){
+
+  console.log("imported id"+data_id)
+  console.log("imported sapn Id"+spanId)
+  var search_li=document.querySelectorAll('li')
+  for(var i=0;i<search_li.length;i++)
+  {
+    var search_Data_id=search_li[i].getAttribute('data-id');
+    
+    if(search_Data_id==data_id)
+    {
+      var id =search_li[i].getAttribute('id')
+      // $('#'+id).addClass('search_Hover')
+      const element=document.querySelector('[data-id="'+search_Data_id+'"]');
+      element.classList.add('search_Hover')
+      console.log(search_Data_id +" = "+data_id  )
+      console.log(element)
+
+    }
+  }
+
+}
+</script>
+
+<div class="w3-container">
+  

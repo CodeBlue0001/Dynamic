@@ -1,0 +1,233 @@
+.chat-section
+{
+    display: none;
+
+}
+.border
+{
+    width: 75%;
+    
+}
+
+    /* body{
+        animation: colorChange 1s infinite;
+       transform: rotate3d(45 45 45);
+    } */
+    @keyframes colorChange{
+        
+        0%{
+            background-image: linear-gradient(to bottom right, rgb(195, 0, 255), rgb(0, 187, 255));
+        }
+        25%{
+            background-image: linear-gradient(to bottom right, rgb(182, 57, 245), rgb(74, 177, 255));
+        }
+        50%{
+            background-image: linear-gradient(to bottom right, rgb(111, 72, 255), rgb(157, 0, 255));
+        }
+        75%{
+            background-image: linear-gradient(to bottom right, rgb(74, 177, 255),rgb(182, 57, 245));
+        }
+        100%{
+            background-image: linear-gradient(to bottom right,rgb(0, 179, 255), rgb(182, 57, 245));
+        }
+    }
+    #users{
+        transition:all 0.5s ease-out ;
+    }
+    #users:hover{
+        transform: scale(1.1);
+    /* transition:all 2s ease-out ; */
+       box-shadow:0 0 0.5px  1px ;
+    }
+  .fa-edit{
+      font-size:18px;
+      float:right;
+      margin-right:4px;
+      cursor: pointer;
+    }
+
+.fa-trash{
+    color: red;
+    display: flex;
+    float: right;
+    margin: 0%;
+    cursor: pointer;
+    
+}
+
+    .sendFile
+    {
+        height: 90px;
+        width: auto;
+
+    }
+    .holder img
+    {
+        height: 60px;
+        width:60px;
+    }
+    .online-status
+{
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    margin-left: 50px;
+
+}
+.offline-status
+{
+   height: 10px;
+   width: 10px;
+   background-color: rgb(176, 171, 171);
+   margin-left: 50px;
+}
+.chat_container{
+    display: flex;
+    /* justify-content: right; */
+}
+.current-user-chat{
+    padding:5px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    max-width: 300px;
+    position: relative;
+    margin-left: auto;
+    background-color: aliceblue;
+    width: fit-content;
+    margin-right: 20px;
+    margin-top: 20px;
+    word-wrap: break-word;
+    
+}
+.distance-user-chat
+{
+    
+    padding:5px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    max-width: 300px;
+    position: relative;
+    margin-right: auto;
+    background-color: aliceblue;
+    width: fit-content;
+    margin-left: 20px;
+    margin-top: 20px;
+    word-wrap: break-word;
+
+    
+} 
+.profile_bar{
+    
+    padding: 4px;
+    padding-left: 2px;
+    height: 55px;
+    
+    display: flex; 
+   
+}
+.Back_arrow_button{
+    /* background-color: cadetblue; */
+    box-shadow: none;
+    height: 50px;
+}
+#profile-bar{
+
+    width: 99%;
+}
+
+
+button:hover {
+  opacity:1;
+}
+
+
+#deltebutton {
+    float: right;
+    background-color: #00ac75;
+    color: black;
+    padding: 9px;
+    margin: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+     width: 100%;
+  }
+}

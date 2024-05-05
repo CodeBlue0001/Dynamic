@@ -1,0 +1,229 @@
+<!-- <center class="reg">
+    <div class="one">
+        <h1><b> Register</b></h1>
+    </div>
+
+<div class="register">
+    
+
+    <form action="" method="post" enctype="multipart/form-data" class="form">
+        <input type="text" name="name" placeholder="Enrter name" required>
+        <br><br>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <br><br>
+        <input type="number" name="number" required placeholder="Mobile number"required>
+        <br><br>
+        <input type="file" name="image" required>
+        <br><br>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <br><br>
+        <input type="submit" value="Register">
+    
+    </form>
+
+</div>
+</center> -->
+
+<div class="confirm">
+<%
+    if(typeof message !=='undefined'){
+        %>
+            <p style="color: green;"> <%= message%></p>
+            <a href="/login">login</a>
+        <% 
+    }
+%>
+
+</div>
+<!-- <style>
+    .reg{
+        display: block;
+        justify-content: center;
+        /* padding: 5px; */
+        margin: auto;
+        background-color: transparent;
+        
+        
+
+        border: double black ;
+        border-radius: 10px;
+        height: fit-content;
+        width: fit-content;
+        
+        /* text-align: ; */
+    }
+    .register
+    {
+        /* display: flex; */
+        /* justify-content: center; */
+        padding: 5px;
+        /* margin: auto; */
+        /* background-blend-mode: ; */
+
+    }
+   
+    .one
+    {
+        padding: 5px;
+        backdrop-filter: blur(8px);
+        margin: auto;
+    }
+    body
+    {
+         background-image:white url("https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg") ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        image-rendering: pixelated;
+    }
+</style> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form action="" method="post" enctype="multipart/form-data" class="form" id="registration-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" placeholder="Enrter name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email (Gmail Preferred)</label>
+                <input type="email" name="email" placeholder="Enter Email" required>
+                <small id="email-error"></small>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="number" name="number" required placeholder="Mobile number"required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <!-- <small id="password-error"></small> -->
+                
+            </div>
+            
+            <!-- <hr> -->
+            <div class="form-group">
+                <label for="picture">Profile Picture</label>
+                <input type="file" name="image" required>
+            </div>
+            
+            <div class="button-container">
+                <button type="submit" class="btn">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<!-- <script>
+    document.ready(function(){
+        $('.btn').click(function(){
+            $('.form').hide();
+            $('.confirm').show();
+        })
+
+
+    })
+</script> -->
+<style>
+    body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e9b8b8;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* max-width: 400px; */
+    /* display: flex; */
+    /* min-height:fit-content ; */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form{
+    display: block;
+    /* padding: 5px; */
+    /* background-color: #ff0b0b; */
+}
+.form-group {
+    margin-bottom: 15px;
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
+
+small {
+    display: block;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+</style>
+</html>
+
